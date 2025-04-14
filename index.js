@@ -19,7 +19,7 @@ const port = process.env.PORT;
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://task-manager-shubham.netlify.app/",
   credentials: true,
 };
 
