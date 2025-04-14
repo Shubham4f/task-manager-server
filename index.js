@@ -19,7 +19,7 @@ const port = process.env.PORT;
 const app = express();
 
 const corsOptions = {
-  origin: "https://task-manager-shubham.netlify.app/",
+  origin: "https://task-manager-shubham.netlify.app",
   credentials: true,
 };
 
