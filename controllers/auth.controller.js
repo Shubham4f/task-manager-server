@@ -20,8 +20,16 @@ export const signUp = async (req, res, next) => {
     );
     const accessToken = accessTokenGenrator(validUser._id, validUser.sessionId);
     return res
-      .cookie("refresh_token", refreshToken, { httpOnly: true })
-      .cookie("access_token", accessToken, { httpOnly: true })
+      .cookie("refresh_token", refreshToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      })
+      .cookie("access_token", accessToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      })
       .status(201)
       .json({
         name,
@@ -49,8 +57,16 @@ export const signIn = async (req, res, next) => {
     );
     const accessToken = accessTokenGenrator(validUser._id, validUser.sessionId);
     return res
-      .cookie("refresh_token", refreshToken, { httpOnly: true })
-      .cookie("access_token", accessToken, { httpOnly: true })
+      .cookie("refresh_token", refreshToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      })
+      .cookie("access_token", accessToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      })
       .status(200)
       .json({
         email,
@@ -74,7 +90,11 @@ export const refresh = async (req, res, next) => {
             validUser.sessionId
           );
           return res
-            .cookie("access_token", accessToken, { httpOnly: true })
+            .cookie("access_token", accessToken, {
+              httpOnly: true,
+              secure: true,
+              sameSite: "None",
+            })
             .status(200)
             .json({ message: "Refreshed." });
         } else {
